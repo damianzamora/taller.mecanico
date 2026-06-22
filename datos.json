@@ -25,6 +25,18 @@
           "modelo": "208"
         }
       }
+    },
+    "3": {
+      "id": 3,
+      "nombre": "Rodolfo",
+      "especialidad": "Chasis",
+      "autosReparados": {
+        "AA600AA": {
+          "placa": "AA600AA",
+          "marca": "BMW",
+          "modelo": "120i"
+        }
+      }
     }
   }
 }

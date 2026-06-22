@@ -151,6 +151,11 @@ public class App {
                 // Guardar
                 gestor.guardarSistema(sistema, "datos.json");
 
+                System.out.println();
+                System.out.println("===== RESUMEN DEL SISTEMA =====");
+                System.out.println("Cantidad de mecanicos: " + sistema.cantidadMecanicos());
+                System.out.println("Cantidad total de autos reparados: "+ sistema.cantidadTotalAutos());
+
                 // Resultado en consola 
 
                 // SistemaTaller sistemaLeido = gestor.cargarSistema("datos.json");

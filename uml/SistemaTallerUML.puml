@@ -1,0 +1,84 @@
+@startuml
+
+interface ISistemaTaller {
+
+```
++agregarMecanico(id,nombre,especialidad)
++agregarAutoAMecanico(idMecanico,placa,marca,modelo)
++cantidadMecanicos()
++cantidadAutosPorMecanico(idMecanico)
++cantidadTotalAutos()
++existeMecanico(idMecanico)
+```
+
+}
+
+class SistemaTaller {
+
+```
+-nombreSistema : String
+-fechaCreacion : String
+-mecanicos : HashMap<Integer,Mecanico>
+
++agregarMecanico()
++agregarAutoAMecanico()
++cantidadMecanicos()
++cantidadAutosPorMecanico()
++cantidadTotalAutos()
++existeMecanico()
+```
+
+}
+
+class Mecanico {
+
+```
+-id : Integer
+-nombre : String
+-especialidad : String
+-autosReparados : HashMap<String,Auto>
+
++agregarAuto()
++cantidadAutos()
+```
+
+}
+
+class Auto {
+
+```
+-placa : String
+-marca : String
+-modelo : String
+```
+
+}
+
+class GestorJson {
+
+```
++cargarSistema()
++guardarSistema()
+```
+
+}
+
+class IdRepetidoException
+class MecanicoNoEncontradoException
+class LimiteMecanicosException
+class LimiteAutosException
+class PlacaRepetidaException
+
+ISistemaTaller <|.. SistemaTaller
+
+SistemaTaller "1" *-- "0..10" Mecanico
+
+Mecanico "1" *-- "0..10" Auto
+
+IdRepetidoException --|> RuntimeException
+MecanicoNoEncontradoException --|> RuntimeException
+LimiteMecanicosException --|> RuntimeException
+LimiteAutosException --|> RuntimeException
+PlacaRepetidaException --|> RuntimeException
+
+@enduml

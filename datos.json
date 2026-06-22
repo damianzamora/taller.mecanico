@@ -1,0 +1,30 @@
+{
+  "nombreSistema": "Mi Taller",
+  "fechaCreacion": "19/06/2026",
+  "mecanicos": {
+    "1": {
+      "id": 1,
+      "nombre": "Juan",
+      "especialidad": "Motor",
+      "autosReparados": {
+        "ABC123": {
+          "placa": "ABC123",
+          "marca": "Ford",
+          "modelo": "Fiesta"
+        }
+      }
+    },
+    "2": {
+      "id": 2,
+      "nombre": "Damian",
+      "especialidad": "Motor",
+      "autosReparados": {
+        "AA503YV": {
+          "placa": "AA503YV",
+          "marca": "Peugeot",
+          "modelo": "208"
+        }
+      }
+    }
+  }
+}

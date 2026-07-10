@@ -29,7 +29,7 @@ public class SistemaTaller implements ISistemaTaller {
     public void agregarMecanico(Integer id, String nombre, String especialidad) {
 
         if (mecanicos.size() >= 10)
-        throw new LimiteMecanicosException();
+            throw new LimiteMecanicosException();
 
         if (mecanicos.containsKey(id))
             throw new IdRepetidoException();
@@ -82,6 +82,82 @@ public class SistemaTaller implements ISistemaTaller {
     @Override
     public boolean existeMecanico(int idMecanico) {
         return mecanicos.containsKey(idMecanico);
+    }
+
+    public void mostrarSistema() {
+
+        System.out.println();
+        System.out.println("=========================================================");
+        System.out.println("         SISTEMA DE ADMINISTRACIÓN DE TALLER");
+        System.out.println("=========================================================");
+
+        System.out.println("Nombre del sistema    : " + nombreSistema);
+        System.out.println("Fecha de creación     : " + fechaCreacion);
+        System.out.println("Cantidad de mecánicos : " + cantidadMecanicos());
+        System.out.println("Cantidad total autos  : " + cantidadTotalAutos());
+
+        System.out.println();
+
+        if (mecanicos.isEmpty()) {
+            System.out.println("No hay mecánicos registrados.");
+            return;
+        }
+
+        System.out.println("=========================================================");
+
+        for (Mecanico mecanico : mecanicos.values()) {
+
+            System.out.println("ID            : " + mecanico.getId());
+            System.out.println("Nombre        : " + mecanico.getNombre());
+            System.out.println("Especialidad  : " + mecanico.getEspecialidad());
+
+            if (mecanico.getAutosReparados().isEmpty()) {
+
+                System.out.println("Autos reparados: Ninguno");
+
+            } else {
+
+                System.out.println("Autos reparados:");
+
+                for (Auto auto : mecanico.getAutosReparados().values()) {
+
+                    System.out.println("   - "
+                            + auto.getPlaca()
+                            + " - "
+                            + auto.getMarca()
+                            + " "
+                            + auto.getModelo());
+
+                }
+
+            }
+
+            System.out.println("---------------------------------------------------------");
+        }
+
+    }
+
+    public void mostrarMecanicos() {
+
+        System.out.println();
+        System.out.println("========== MECÁNICOS DISPONIBLES ==========");
+
+        if (mecanicos.isEmpty()) {
+            System.out.println("No hay mecánicos registrados.");
+            return;
+        }
+
+        for (Mecanico mecanico : mecanicos.values()) {
+
+            System.out.println(
+                    "ID: " + mecanico.getId()
+                            + " | Nombre: " + mecanico.getNombre()
+                            + " | Especialidad: " + mecanico.getEspecialidad());
+
+        }
+
+        System.out.println("===========================================");
+
     }
 
 }

@@ -19,4 +19,8 @@ public interface ISistemaTaller {
 
     public boolean existeMecanico(int idMecanico);
 
+    public void mostrarSistema();
+
+    public void mostrarMecanicos();
+
 }

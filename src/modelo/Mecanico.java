@@ -41,4 +41,20 @@ public class Mecanico {
         return autosReparados.size();
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getEspecialidad() {
+        return especialidad;
+    }
+
+    public HashMap<String, Auto> getAutosReparados() {
+        return autosReparados;
+    }
+
 }

@@ -4,25 +4,37 @@
   "mecanicos": {
     "1": {
       "id": 1,
-      "nombre": "damian",
-      "especialidad": "motor",
+      "nombre": "Juan",
+      "especialidad": "Motor",
       "autosReparados": {
-        "AAA503": {
-          "placa": "AAA503",
-          "marca": "Peugeot",
-          "modelo": "2016"
+        "ABC123": {
+          "placa": "ABC123",
+          "marca": "Ford",
+          "modelo": "Fiesta"
         }
       }
     },
     "2": {
       "id": 2,
-      "nombre": "Juan",
-      "especialidad": "Chapa",
+      "nombre": "Damian",
+      "especialidad": "Motor",
       "autosReparados": {
-        "AAA888": {
-          "placa": "AAA888",
-          "marca": "DAS",
-          "modelo": "122"
+        "AA503YV": {
+          "placa": "AA503YV",
+          "marca": "Peugeot",
+          "modelo": "208"
+        }
+      }
+    },
+    "3": {
+      "id": 3,
+      "nombre": "Rodolfo",
+      "especialidad": "Chasis",
+      "autosReparados": {
+        "AA600AA": {
+          "placa": "AA600AA",
+          "marca": "BMW",
+          "modelo": "120i"
         }
       }
     }

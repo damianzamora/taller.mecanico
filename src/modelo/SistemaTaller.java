@@ -26,10 +26,12 @@ public class SistemaTaller implements ISistemaTaller {
     }
 
     @Override
-    public void agregarMecanico(Integer id, String nombre, String especialidad) {
+    public void agregarMecanico(String nombre, String especialidad) {
 
         if (mecanicos.size() >= 10)
             throw new LimiteMecanicosException();
+        
+        int id = generarNuevoId();
 
         if (mecanicos.containsKey(id))
             throw new IdRepetidoException();
@@ -157,6 +159,22 @@ public class SistemaTaller implements ISistemaTaller {
         }
 
         System.out.println("===========================================");
+
+    }
+
+    private int generarNuevoId() {
+
+        int mayorId = 0;
+
+        for (Integer id : mecanicos.keySet()) {
+
+            if (id > mayorId) {
+                mayorId = id;
+            }
+
+        }
+
+        return mayorId + 1;
 
     }
 

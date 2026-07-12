@@ -1,84 +1,169 @@
 @startuml
 
-interface ISistemaTaller {
+title Sistema de Administración de Taller - Versión 2
 
-```
-+agregarMecanico(id,nombre,especialidad)
-+agregarAutoAMecanico(idMecanico,placa,marca,modelo)
-+cantidadMecanicos()
-+cantidadAutosPorMecanico(idMecanico)
-+cantidadTotalAutos()
-+existeMecanico(idMecanico)
-```
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam packageStyle rectangle
+
+package "app" {
+
+class App {
+    +main(String[] args) : void
+}
 
 }
 
+package "vista" {
+
+class Menu {
+
+    -scanner : Scanner
+    -gestor : GestorJson
+    -sistema : SistemaTaller
+
+    +iniciar() : void
+
+    -mostrarMenuInicial() : void
+    -mostrarMenuPrincipal() : void
+
+    -crearSistema() : void
+    -cargarSistema() : void
+    -guardarSistema() : void
+
+    -ejecutarDemostracion() : void
+
+    -agregarMecanico() : void
+    -agregarAuto() : void
+
+    -leerEntero() : int
+    -pausar() : void
+
+}
+
+}
+
+package "interfaces" {
+
+interface ISistemaTaller {
+
+    +agregarMecanico(nombre:String, especialidad:String) : void
+
+    +agregarAutoAMecanico(id:int, placa:String, marca:String, modelo:String) : void
+
+    +cantidadMecanicos() : int
+
+    +cantidadTotalAutos() : int
+
+    +mostrarSistema() : void
+
+    +mostrarMecanicos() : void
+
+}
+
+}
+
+package "modelo" {
+
 class SistemaTaller {
 
-```
--nombreSistema : String
--fechaCreacion : String
--mecanicos : HashMap<Integer,Mecanico>
+    -nombreSistema : String
+    -fechaCreacion : String
+    -mecanicos : HashMap<Integer,Mecanico>
 
-+agregarMecanico()
-+agregarAutoAMecanico()
-+cantidadMecanicos()
-+cantidadAutosPorMecanico()
-+cantidadTotalAutos()
-+existeMecanico()
-```
+    +SistemaTaller(nombreSistema, fechaCreacion)
+
+    +agregarMecanico(nombre:String, especialidad:String) : void
+
+    +agregarAutoAMecanico(id:int, placa:String, marca:String, modelo:String) : void
+
+    +cantidadMecanicos() : int
+
+    +cantidadTotalAutos() : int
+
+    +mostrarSistema() : void
+
+    +mostrarMecanicos() : void
+
+    -generarNuevoId() : int
 
 }
 
 class Mecanico {
 
-```
--id : Integer
--nombre : String
--especialidad : String
--autosReparados : HashMap<String,Auto>
+    -id : Integer
+    -nombre : String
+    -especialidad : String
+    -autosReparados : HashMap<String,Auto>
 
-+agregarAuto()
-+cantidadAutos()
-```
+    +agregarAuto(auto:Auto) : void
+
+    +getId() : Integer
+
+    +getNombre() : String
+
+    +getEspecialidad() : String
+
+    +getAutosReparados() : HashMap<String,Auto>
 
 }
 
 class Auto {
 
-```
--placa : String
--marca : String
--modelo : String
-```
+    -placa : String
+    -marca : String
+    -modelo : String
+
+    +getPlaca() : String
+
+    +getMarca() : String
+
+    +getModelo() : String
 
 }
+
+}
+
+package "persistencia" {
 
 class GestorJson {
 
-```
-+cargarSistema()
-+guardarSistema()
-```
+    +guardarSistema(sistema:SistemaTaller, archivo:String) : void
+
+    +cargarSistema(archivo:String) : SistemaTaller
 
 }
 
-class IdRepetidoException
-class MecanicoNoEncontradoException
+}
+
+package "excepciones" {
+
 class LimiteMecanicosException
 class LimiteAutosException
-class PlacaRepetidaException
+class NombreVacioException
+class MecanicoNoEncontradoException
 
-ISistemaTaller <|.. SistemaTaller
+}
 
-SistemaTaller "1" *-- "0..10" Mecanico
+'==========================
+' Relaciones
+'==========================
 
-Mecanico "1" *-- "0..10" Auto
+App --> Menu
 
-IdRepetidoException --|> RuntimeException
-MecanicoNoEncontradoException --|> RuntimeException
+Menu --> SistemaTaller
+Menu --> GestorJson
+
+SistemaTaller ..|> ISistemaTaller
+
+SistemaTaller "1" *-- "*" Mecanico
+Mecanico "1" *-- "*" Auto
+
+GestorJson ..> SistemaTaller
+
 LimiteMecanicosException --|> RuntimeException
 LimiteAutosException --|> RuntimeException
-PlacaRepetidaException --|> RuntimeException
+NombreVacioException --|> RuntimeException
+MecanicoNoEncontradoException --|> RuntimeException
 
 @enduml

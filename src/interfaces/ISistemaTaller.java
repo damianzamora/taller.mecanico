@@ -2,8 +2,7 @@ package interfaces;
 
 public interface ISistemaTaller {
 
-    public void agregarMecanico(Integer id,
-            String nombre,
+    public void agregarMecanico(String nombre,
             String especialidad);
 
     public void agregarAutoAMecanico(Integer idMecanico,

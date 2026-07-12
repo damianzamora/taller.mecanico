@@ -135,9 +135,9 @@ public class Menu {
                 "Mi Taller",
                 "19/06/2026");
 
-        sistema.agregarMecanico(1, "Juan", "Motor");
-        sistema.agregarMecanico(2, "Damian", "Motor");
-        sistema.agregarMecanico(3, "Rodolfo", "Chasis");
+        sistema.agregarMecanico("Juan", "Motor");
+        sistema.agregarMecanico("Damian", "Motor");
+        sistema.agregarMecanico("Rodolfo", "Chasis");
 
         sistema.agregarAutoAMecanico(
                 1,
@@ -156,6 +156,8 @@ public class Menu {
                 "AA600AA",
                 "BMW",
                 "120i");
+
+        gestor.guardarSistema(sistema, "datos.json");        
 
         System.out.println("\nDemostración cargada correctamente.");
 
@@ -235,9 +237,6 @@ public class Menu {
         System.out.println();
         System.out.println("========== AGREGAR MECÁNICO ==========");
 
-        System.out.print("ID: ");
-        int id = leerEntero();
-
         String nombre;
 
         do {
@@ -266,7 +265,7 @@ public class Menu {
 
         try {
 
-            sistema.agregarMecanico(id, nombre, especialidad);
+            sistema.agregarMecanico(nombre, especialidad);
 
             System.out.println("\nMecánico agregado correctamente.");
 

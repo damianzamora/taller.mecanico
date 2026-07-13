@@ -115,11 +115,11 @@ public class SistemaTaller implements ISistemaTaller {
 
             if (mecanico.getAutosReparados().isEmpty()) {
 
-                System.out.println("Autos reparados: Ninguno");
+                System.out.println("Autos asignados: Ninguno");
 
             } else {
 
-                System.out.println("Autos reparados:");
+                System.out.println("Autos asignados:");
 
                 for (Auto auto : mecanico.getAutosReparados().values()) {
 

@@ -197,7 +197,13 @@ public class Menu {
                     break;
 
                 case 3:
-                    sistema.mostrarSistema();
+                    if (sistema != null) {
+                        sistema.mostrarSistema();
+                        } else {
+                        System.out.println("\n- - - - - - - - - - - - - ");
+                        System.out.println("\nNo hay un sistema cargado.");
+                        System.out.println("Primero cree un sistema nuevo o cargue un archivo JSON.\n");
+                    }
                     break;
 
                 case 4:
@@ -337,5 +343,19 @@ public class Menu {
         }
 
     }
+
+    private boolean haySistemaCargado() {
+
+    if (sistema == null) {
+
+        System.out.println("\nNo hay un sistema cargado.");
+        System.out.println("Primero cree uno nuevo o cargue un archivo JSON.\n");
+
+        return false;
+    }
+
+    return true;
+
+}
 
 }
